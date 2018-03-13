@@ -2,14 +2,177 @@
 <html>
 <head>
 	
+<style>
 
+input{
+  width: 150px;
+  height: 100px;
+  border-radius: 25px;
+}
+
+input:hover{
+ background: #64DC51; 
+ transition: background 0.3s;
+}
+#output{
+  margin: 0 auto;
+  width: 400px;
+  background: white;
+  text-align: center;
+  margin-top: 50px;
+  height: 50px;
+  font-size: 40px;
+  font-family: 'Lato', sans-serif;
+  border-radius: 25px;
+}
+#superconteneur {
+  border-radius: 25px;
+  margin: 0 auto;
+  height: 500px;
+  width: 600px;
+
+ 
+}
+body {
+  background-color: #FF573E;
+  animation: colorchange 20s;
+  animation-iteration-count: 300;
+  -webkit-animation: colorchange 20s; 
+  -webkit-animation-iteration-count: 300;
+}
+   @keyframes colorchange
+    {
+      0%   {background: #ACF39D;}
+      25%  {background: #E85F5C;}
+      50%  {background: #9CFFFA;}
+      75%  {background: #773344;}
+      100% {background: #E3B5A4;}
+    }
+    @-webkit-keyframes colorchange 
+    {
+      0%   {background: red;}
+      25%  {background: yellow;}
+      50%  {background: blue;}
+      75%  {background: green;}
+      100% {background: red;}
+    }
+#conteneur
+{
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+    display: flex;
+}
+
+
+input[value="AC"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="CE"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="%"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="/"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="7"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="8"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="9"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="*"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="4"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="5"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="6"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="-"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="1"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="2"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="3"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="+"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="0"]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+input[value="1"]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="."]{ font-size: 50px; font-family: 'Lato', sans-serif;}
+input[value="="]{ font-size: 50px;font-family: 'Lato', sans-serif; }
+
+</style>
 </head>
 
 <body>
 	
 
-Hello world !
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<div id="output">Quick Math !</div>
+<div id ="superconteneur">
+<div id="conteneur">
+   
+  <div><input type="button" value='AC' onclick='Reset(this)'/></div>
+  
+  <div><input type="button" value='CE' onclick='rem1(this)'/></div>
+  
+  <div><input type="button" value='%' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='/' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='7' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='8' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='9' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='*' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='4' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='5' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='6' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='-' onclick='ShowValue(this)'/></div>
+  
+  <div>
+    <input type="button" value='1' onclick='ShowValue(this)'/>
+      </div>
+  
+  <div><input type="button" value='2' onclick='ShowValue(this)'/></div>
 
+  <div>  <input type="button" value='3' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='+' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='0' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='.' onclick='ShowValue(this)'/></div>
+  
+  <div><input type="button" value='=' onclick='quickMath(this)'/></div>
+  
+</div>
+</div>
+
+
+
+<script>
+let input = "";
+//peremt de saisir dans quickmath
+    function ShowValue(btn){  
+    input += btn.value;
+    
+  
+      console.log(input);
+      document.getElementById("output").innerHTML = input;
+    }
+//Fait le calcul et envoie dans quickmath
+function quickMath(){
+  console.log(eval(input));
+       document.getElementById("output").innerHTML = eval(input);
+}
+//Reset
+function Reset(btn){
+   document.getElementById("output").innerHTML = "0";
+  input = "";
+}
+//rem
+function rem1(btn){
+input= input.replace(input.slice(-1), "");
+    console.log(input);
+ document.getElementById("output").innerHTML = input;
+}
+
+
+
+</script>
 </body>
 
 
